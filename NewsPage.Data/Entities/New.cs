@@ -11,10 +11,14 @@ namespace NewsPage.Models.Entities
     public class New
     {
         public int Id { get; set; }
-
+        public string Name { set; get; }
         public DateTime DateCreated { set; get; }
         public string Creator { get; set; }
         public int ViewCount { get; set; }
+
+        public string Description { set; get; }
+
+        public string Content { set; get; }
 
         public bool IsShowOnHome { set; get; }
 
@@ -22,7 +26,6 @@ namespace NewsPage.Models.Entities
         public bool IsHotNews { get; set; }
 
         public List<Comment> Comments { get; set; }
-        public List<NewsInfo> NewsInfos { get; set; }
 
         //Ảnh bìa
         public List<NewsImage> NewsImages { get; set; }

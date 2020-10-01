@@ -18,6 +18,8 @@ namespace NewsPage.Data.Configurations
 
             builder.Property(x => x.Id).UseIdentityColumn();
 
+            builder.Property(x => x.Name).HasMaxLength(30).IsRequired();
+
             builder.Property(x => x.Status).HasDefaultValue(Status.Active);
         }
     }
