@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewsPage.Data.EF;
 
 namespace NewsPage.Data.Migrations
 {
     [DbContext(typeof(NewsPageDbContext))]
-    partial class NewsPageDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201001021508_RemoveNewsInfo")]
+    partial class RemoveNewsInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,13 +94,6 @@ namespace NewsPage.Data.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.ToTable("AppUserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
-                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -133,23 +128,6 @@ namespace NewsPage.Data.Migrations
                     b.HasKey("Key");
 
                     b.ToTable("AppConfigs");
-
-                    b.HasData(
-                        new
-                        {
-                            Key = "HomeTitle",
-                            Value = "This is home page of NewsPage"
-                        },
-                        new
-                        {
-                            Key = "HomeKeyword",
-                            Value = "This is keyword of NewsPage"
-                        },
-                        new
-                        {
-                            Key = "HomeDescription",
-                            Value = "This is description of NewsPage"
-                        });
                 });
 
             modelBuilder.Entity("NewsPage.Data.Entities.AppRole", b =>
@@ -175,16 +153,6 @@ namespace NewsPage.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "91878c65-08b5-4e53-8cfe-b49b4687d991",
-                            Description = "Administrator role",
-                            Name = "admin",
-                            NormalizedName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("NewsPage.Data.Entities.AppUser", b =>
@@ -251,27 +219,6 @@ namespace NewsPage.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "bd65de96-6e09-4dbe-b509-fd72bf7f8996",
-                            Dob = new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "vohoang17110143@gmail.com",
-                            EmailConfirmed = true,
-                            FirstName = "Hoang",
-                            LastName = "Nguyen Vo",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "vohoang17110143@gmail.com",
-                            NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM5KCvDeQekxr5TAlsG+NIu7ht4nskDLeEuzSGqLM9pVrJMo0reM+2e7brivWqB0Hw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("NewsPage.Data.Entities.CategoryInfo", b =>
@@ -296,38 +243,6 @@ namespace NewsPage.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("CategoryTranslations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            Name = "Chính trị"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 1,
-                            Name = "Giao thông"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 1,
-                            Name = "Đô thị"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 2,
-                            Name = "Pháp đình"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 2,
-                            Name = "Vụ án"
-                        });
                 });
 
             modelBuilder.Entity("NewsPage.Data.Entities.Comment", b =>
@@ -476,56 +391,6 @@ namespace NewsPage.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsShowOnHome = true,
-                            Name = "Xã hội",
-                            SortOrder = 1,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IsShowOnHome = true,
-                            Name = "Pháp luật",
-                            SortOrder = 2,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IsShowOnHome = true,
-                            Name = "Thế giới",
-                            SortOrder = 3,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            IsShowOnHome = true,
-                            Name = "Kinh doanh",
-                            SortOrder = 4,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            IsShowOnHome = true,
-                            Name = "Công nghệ",
-                            SortOrder = 5,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            IsShowOnHome = true,
-                            Name = "Sức khỏe",
-                            SortOrder = 6,
-                            Status = 1
-                        });
                 });
 
             modelBuilder.Entity("NewsPage.Models.Entities.New", b =>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using NewsPage.Data.Configurations;
 using NewsPage.Data.Entities;
+using NewsPage.Data.Extensions;
 using NewsPage.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,6 @@ namespace NewsPage.Data.EF
             modelBuilder.ApplyConfiguration(new CategoryInfoConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new NewConfiguration());
-            modelBuilder.ApplyConfiguration(new NewInfoConfiguration());
             modelBuilder.ApplyConfiguration(new NewsImageConfiguration());
             modelBuilder.ApplyConfiguration(new NewsInCategoryConfiguration());
             modelBuilder.ApplyConfiguration(new NewsSaveConfiguration());
@@ -38,6 +38,9 @@ namespace NewsPage.Data.EF
 
             modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
             modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
+
+            //seeding data
+            modelBuilder.Seed();
         }
 
         public DbSet<New> News { get; set; }
@@ -46,7 +49,6 @@ namespace NewsPage.Data.EF
         public DbSet<NewsInCategory> NewsInCategories { get; set; }
         public DbSet<AppConfig> AppConfigs { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<NewsInfo> NewsInfos { get; set; }
 
         public DbSet<NewsImage> NewsImages { get; set; }
 

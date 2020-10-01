@@ -15,6 +15,9 @@ namespace NewsPage.Data.Configurations
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
+            builder.Property(x => x.Name).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Description).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Content).IsRequired().HasColumnType("text");
             builder.Property(x => x.Creator).IsRequired();
             builder.Property(x => x.ViewCount).IsRequired().HasDefaultValue(0);
         }
